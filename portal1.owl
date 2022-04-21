@@ -30,6 +30,15 @@
     
 
 
+    <!-- http://www.iiitb.ac.in/IMT2018071/DM/portal1#GotJob -->
+
+    <owl:ObjectProperty rdf:about="http://www.iiitb.ac.in/IMT2018071/DM/portal1#GotJob">
+        <rdfs:domain rdf:resource="http://www.iiitb.ac.in/IMT2018071/DM/portal1#Seeker"/>
+        <rdfs:range rdf:resource="http://www.iiitb.ac.in/IMT2018071/DM/portal1#Job_post"/>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://www.iiitb.ac.in/IMT2018071/DM/portal1#HasEducation -->
 
     <owl:ObjectProperty rdf:about="http://www.iiitb.ac.in/IMT2018071/DM/portal1#HasEducation">
@@ -326,6 +335,7 @@
 
     <owl:DatatypeProperty rdf:about="http://www.iiitb.ac.in/IMT2018071/DM/portal1#job_title">
         <rdfs:domain rdf:resource="http://www.iiitb.ac.in/IMT2018071/DM/portal1#Experience_details"/>
+        <rdfs:domain rdf:resource="http://www.iiitb.ac.in/IMT2018071/DM/portal1#Job_post"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
     </owl:DatatypeProperty>
     
@@ -699,6 +709,7 @@
         <currency rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Rupees</currency>
         <job_desc rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Need an experienced cloud developer</job_desc>
         <job_id rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">701</job_id>
+        <job_title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cloud Developer</job_title>
         <job_type rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Full Time</job_type>
         <posted_date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-03-01T00:00:00</posted_date>
         <salary rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1200000</salary>
@@ -714,6 +725,7 @@
         <currency rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Rupees</currency>
         <job_desc rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Need an experienced DBA</job_desc>
         <job_id rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">702</job_id>
+        <job_title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DBA</job_title>
         <job_type rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Full Time</job_type>
         <posted_date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2021-03-01T00:00:00</posted_date>
         <salary rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1300000</salary>
@@ -727,6 +739,7 @@
         <rdf:type rdf:resource="http://www.iiitb.ac.in/IMT2018071/DM/portal1#Seeker"/>
         <AppliesFor rdf:resource="http://www.iiitb.ac.in/IMT2018071/DM/portal1#Job1"/>
         <AppliesFor rdf:resource="http://www.iiitb.ac.in/IMT2018071/DM/portal1#Job2"/>
+        <GotJob rdf:resource="http://www.iiitb.ac.in/IMT2018071/DM/portal1#Job1"/>
         <HasEducation rdf:resource="http://www.iiitb.ac.in/IMT2018071/DM/portal1#Education1"/>
         <HasSkills rdf:resource="http://www.iiitb.ac.in/IMT2018071/DM/portal1#Skill1"/>
         <HasSkills rdf:resource="http://www.iiitb.ac.in/IMT2018071/DM/portal1#Skill2"/>
