@@ -15,7 +15,7 @@ import java.util.List;
 public class InitJena {
 
     private static QueryExecution qe;
-    private static String ontoFile = "PoliticsRDF.owl";
+    private static String ontoFile = "portal1.owl";
 
     public static ResultSet execQuery(String queryString) {
 
@@ -26,11 +26,15 @@ public class InitJena {
             try {
                 ontoModel.read(in, null);
 
+                System.out.println(queryString);
                 Query query = QueryFactory.create(queryString);
+                System.out.println(query);
 
                 //Execute the query and obtain results
                 qe = QueryExecutionFactory.create(query, ontoModel);
+                System.out.println(qe);
                 ResultSet results = qe.execSelect();
+                System.out.println(results);
 
                 // Output query results
                 //ResultSetFormatter.out(System.out, results, query);
@@ -49,13 +53,15 @@ public class InitJena {
     }
     
     public static List<JSONObject> describeClass(String queryString){
+    	System.out.println(queryString);
     	ResultSet resultSet = execQuery(queryString);
         List<JSONObject> list = new ArrayList<>();
         while (resultSet.hasNext()) {
             JSONObject obj = new JSONObject();
             QuerySolution solution = resultSet.nextSolution();
+            System.out.println(solution);
 
-            obj.put(solution.get("Y").toString().split("#")[1],solution.get("Z").toString().split("#")[1]);
+            obj.put(solution.get("y").toString().split("#")[1],solution.get("z").toString().split("#")[1]);
             list.add(obj);
         }
         return list;
