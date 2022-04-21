@@ -74,7 +74,8 @@ public class InitJena {
             else if(z.contains("#")) {
             	z = z.split("#")[1];
             }
-                        
+             
+            System.out.println(y);
             obj.put(y,z);
             list.add(obj);
         }
