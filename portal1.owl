@@ -6,7 +6,9 @@
      xmlns:xml="http://www.w3.org/XML/1998/namespace"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
-    <owl:Ontology rdf:about="http://www.iiitb.ac.in/IMT2018071/DM/portal1"/>
+    <owl:Ontology rdf:about="http://www.iiitb.ac.in/IMT2018071/DM/portal1">
+        <owl:imports rdf:resource="http://www.iiitb.ac.in/IMT2018071/DM/portal2"/>
+    </owl:Ontology>
     
 
 

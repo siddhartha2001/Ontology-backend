@@ -1,0 +1,439 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/lenovo/ontologies/2022/2/untitled-ontology-4"
+     xml:base="http://www.semanticweb.org/lenovo/ontologies/2022/2/untitled-ontology-4"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:portal2="http://www.iiitb.ac.in/IMT2018071/DM/portal2#"
+     xmlns:untitled-ontology-4="http://www.semanticweb.org/lenovo/ontologies/2022/2/untitled-ontology-4#">
+    <owl:Ontology rdf:about="http://www.iiitb.ac.in/IMT2018071/DM/portal2"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.iiitb.ac.in/IMT2018071/DM/portal2#applies -->
+
+    <owl:ObjectProperty rdf:about="http://www.iiitb.ac.in/IMT2018071/DM/portal2#applies">
+        <rdfs:domain rdf:resource="http://www.iiitb.ac.in/IMT2018071/DM/portal2#applicant"/>
+        <rdfs:range rdf:resource="http://www.iiitb.ac.in/IMT2018071/DM/portal2#job"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.iiitb.ac.in/IMT2018071/DM/portal2#has -->
+
+    <owl:ObjectProperty rdf:about="http://www.iiitb.ac.in/IMT2018071/DM/portal2#has">
+        <rdfs:domain rdf:resource="http://www.iiitb.ac.in/IMT2018071/DM/portal2#applicant"/>
+        <rdfs:range rdf:resource="http://www.iiitb.ac.in/IMT2018071/DM/portal2#skill"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.iiitb.ac.in/IMT2018071/DM/portal2#location_address -->
+
+    <owl:ObjectProperty rdf:about="http://www.iiitb.ac.in/IMT2018071/DM/portal2#location_address">
+        <rdfs:domain rdf:resource="http://www.iiitb.ac.in/IMT2018071/DM/portal2#job"/>
+        <rdfs:range rdf:resource="http://www.iiitb.ac.in/IMT2018071/DM/portal2#job_address"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.iiitb.ac.in/IMT2018071/DM/portal2#offers -->
+
+    <owl:ObjectProperty rdf:about="http://www.iiitb.ac.in/IMT2018071/DM/portal2#offers">
+        <rdfs:domain rdf:resource="http://www.iiitb.ac.in/IMT2018071/DM/portal2#company"/>
+        <rdfs:range rdf:resource="http://www.iiitb.ac.in/IMT2018071/DM/portal2#job"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.iiitb.ac.in/IMT2018071/DM/portal2#applicant_id -->
+
+    <owl:DatatypeProperty rdf:about="http://www.iiitb.ac.in/IMT2018071/DM/portal2#applicant_id">
+        <rdfs:domain rdf:resource="http://www.iiitb.ac.in/IMT2018071/DM/portal2#applicant"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.iiitb.ac.in/IMT2018071/DM/portal2#applicant_id_details -->
+
+    <owl:DatatypeProperty rdf:about="http://www.iiitb.ac.in/IMT2018071/DM/portal2#applicant_id_details">
+        <rdfs:domain rdf:resource="http://www.iiitb.ac.in/IMT2018071/DM/portal2#applicant_details"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.iiitb.ac.in/IMT2018071/DM/portal2#applicant_job_id -->
+
+    <owl:DatatypeProperty rdf:about="http://www.iiitb.ac.in/IMT2018071/DM/portal2#applicant_job_id">
+        <rdfs:domain rdf:resource="http://www.iiitb.ac.in/IMT2018071/DM/portal2#applicant_details"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.iiitb.ac.in/IMT2018071/DM/portal2#applicant_name -->
+
+    <owl:DatatypeProperty rdf:about="http://www.iiitb.ac.in/IMT2018071/DM/portal2#applicant_name">
+        <rdfs:domain rdf:resource="http://www.iiitb.ac.in/IMT2018071/DM/portal2#applicant"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.iiitb.ac.in/IMT2018071/DM/portal2#applicant_status -->
+
+    <owl:DatatypeProperty rdf:about="http://www.iiitb.ac.in/IMT2018071/DM/portal2#applicant_status">
+        <rdfs:domain rdf:resource="http://www.iiitb.ac.in/IMT2018071/DM/portal2#applicant_details"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.iiitb.ac.in/IMT2018071/DM/portal2#application_id -->
+
+    <owl:DatatypeProperty rdf:about="http://www.iiitb.ac.in/IMT2018071/DM/portal2#application_id">
+        <rdfs:domain rdf:resource="http://www.iiitb.ac.in/IMT2018071/DM/portal2#applicant_details"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.iiitb.ac.in/IMT2018071/DM/portal2#company_address -->
+
+    <owl:DatatypeProperty rdf:about="http://www.iiitb.ac.in/IMT2018071/DM/portal2#company_address">
+        <rdfs:domain rdf:resource="http://www.iiitb.ac.in/IMT2018071/DM/portal2#company"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.iiitb.ac.in/IMT2018071/DM/portal2#company_contact -->
+
+    <owl:DatatypeProperty rdf:about="http://www.iiitb.ac.in/IMT2018071/DM/portal2#company_contact">
+        <rdfs:domain rdf:resource="http://www.iiitb.ac.in/IMT2018071/DM/portal2#company"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.iiitb.ac.in/IMT2018071/DM/portal2#company_id -->
+
+    <owl:DatatypeProperty rdf:about="http://www.iiitb.ac.in/IMT2018071/DM/portal2#company_id">
+        <rdfs:domain rdf:resource="http://www.iiitb.ac.in/IMT2018071/DM/portal2#company"/>
+        <rdfs:domain rdf:resource="http://www.iiitb.ac.in/IMT2018071/DM/portal2#job"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.iiitb.ac.in/IMT2018071/DM/portal2#company_name -->
+
+    <owl:DatatypeProperty rdf:about="http://www.iiitb.ac.in/IMT2018071/DM/portal2#company_name">
+        <rdfs:domain rdf:resource="http://www.iiitb.ac.in/IMT2018071/DM/portal2#company"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.iiitb.ac.in/IMT2018071/DM/portal2#company_website -->
+
+    <owl:DatatypeProperty rdf:about="http://www.iiitb.ac.in/IMT2018071/DM/portal2#company_website">
+        <rdfs:domain rdf:resource="http://www.iiitb.ac.in/IMT2018071/DM/portal2#company"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.iiitb.ac.in/IMT2018071/DM/portal2#dob -->
+
+    <owl:DatatypeProperty rdf:about="http://www.iiitb.ac.in/IMT2018071/DM/portal2#dob">
+        <rdfs:domain rdf:resource="http://www.iiitb.ac.in/IMT2018071/DM/portal2#applicant"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.iiitb.ac.in/IMT2018071/DM/portal2#email -->
+
+    <owl:DatatypeProperty rdf:about="http://www.iiitb.ac.in/IMT2018071/DM/portal2#email">
+        <rdfs:domain rdf:resource="http://www.iiitb.ac.in/IMT2018071/DM/portal2#applicant"/>
+        <rdfs:domain rdf:resource="http://www.iiitb.ac.in/IMT2018071/DM/portal2#company"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.iiitb.ac.in/IMT2018071/DM/portal2#gender -->
+
+    <owl:DatatypeProperty rdf:about="http://www.iiitb.ac.in/IMT2018071/DM/portal2#gender">
+        <rdfs:domain rdf:resource="http://www.iiitb.ac.in/IMT2018071/DM/portal2#applicant"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.iiitb.ac.in/IMT2018071/DM/portal2#job_addr_id -->
+
+    <owl:DatatypeProperty rdf:about="http://www.iiitb.ac.in/IMT2018071/DM/portal2#job_addr_id">
+        <rdfs:domain rdf:resource="http://www.iiitb.ac.in/IMT2018071/DM/portal2#job_address"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.iiitb.ac.in/IMT2018071/DM/portal2#job_description -->
+
+    <owl:DatatypeProperty rdf:about="http://www.iiitb.ac.in/IMT2018071/DM/portal2#job_description">
+        <rdfs:domain rdf:resource="http://www.iiitb.ac.in/IMT2018071/DM/portal2#job"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.iiitb.ac.in/IMT2018071/DM/portal2#job_id -->
+
+    <owl:DatatypeProperty rdf:about="http://www.iiitb.ac.in/IMT2018071/DM/portal2#job_id">
+        <rdfs:domain rdf:resource="http://www.iiitb.ac.in/IMT2018071/DM/portal2#company"/>
+        <rdfs:domain rdf:resource="http://www.iiitb.ac.in/IMT2018071/DM/portal2#job"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.iiitb.ac.in/IMT2018071/DM/portal2#job_title -->
+
+    <owl:DatatypeProperty rdf:about="http://www.iiitb.ac.in/IMT2018071/DM/portal2#job_title">
+        <rdfs:domain rdf:resource="http://www.iiitb.ac.in/IMT2018071/DM/portal2#job"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.iiitb.ac.in/IMT2018071/DM/portal2#location_name -->
+
+    <owl:DatatypeProperty rdf:about="http://www.iiitb.ac.in/IMT2018071/DM/portal2#location_name">
+        <rdfs:domain rdf:resource="http://www.iiitb.ac.in/IMT2018071/DM/portal2#job_address"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.iiitb.ac.in/IMT2018071/DM/portal2#password -->
+
+    <owl:DatatypeProperty rdf:about="http://www.iiitb.ac.in/IMT2018071/DM/portal2#password">
+        <rdfs:domain rdf:resource="http://www.iiitb.ac.in/IMT2018071/DM/portal2#applicant"/>
+        <rdfs:domain rdf:resource="http://www.iiitb.ac.in/IMT2018071/DM/portal2#company"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.iiitb.ac.in/IMT2018071/DM/portal2#phonenumber -->
+
+    <owl:DatatypeProperty rdf:about="http://www.iiitb.ac.in/IMT2018071/DM/portal2#phonenumber">
+        <rdfs:domain rdf:resource="http://www.iiitb.ac.in/IMT2018071/DM/portal2#applicant"/>
+        <rdfs:domain rdf:resource="http://www.iiitb.ac.in/IMT2018071/DM/portal2#company"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.iiitb.ac.in/IMT2018071/DM/portal2#salary -->
+
+    <owl:DatatypeProperty rdf:about="http://www.iiitb.ac.in/IMT2018071/DM/portal2#salary">
+        <rdfs:domain rdf:resource="http://www.iiitb.ac.in/IMT2018071/DM/portal2#job"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.iiitb.ac.in/IMT2018071/DM/portal2#skill_id -->
+
+    <owl:DatatypeProperty rdf:about="http://www.iiitb.ac.in/IMT2018071/DM/portal2#skill_id">
+        <rdfs:domain rdf:resource="http://www.iiitb.ac.in/IMT2018071/DM/portal2#skill"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.iiitb.ac.in/IMT2018071/DM/portal2#skill_name -->
+
+    <owl:DatatypeProperty rdf:about="http://www.iiitb.ac.in/IMT2018071/DM/portal2#skill_name">
+        <rdfs:domain rdf:resource="http://www.iiitb.ac.in/IMT2018071/DM/portal2#skill"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.iiitb.ac.in/IMT2018071/DM/portal2#vacancies -->
+
+    <owl:DatatypeProperty rdf:about="http://www.iiitb.ac.in/IMT2018071/DM/portal2#vacancies">
+        <rdfs:domain rdf:resource="http://www.iiitb.ac.in/IMT2018071/DM/portal2#job"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.iiitb.ac.in/IMT2018071/DM/portal2#applicant -->
+
+    <owl:Class rdf:about="http://www.iiitb.ac.in/IMT2018071/DM/portal2#applicant"/>
+    
+
+
+    <!-- http://www.iiitb.ac.in/IMT2018071/DM/portal2#applicant_details -->
+
+    <owl:Class rdf:about="http://www.iiitb.ac.in/IMT2018071/DM/portal2#applicant_details"/>
+    
+
+
+    <!-- http://www.iiitb.ac.in/IMT2018071/DM/portal2#company -->
+
+    <owl:Class rdf:about="http://www.iiitb.ac.in/IMT2018071/DM/portal2#company"/>
+    
+
+
+    <!-- http://www.iiitb.ac.in/IMT2018071/DM/portal2#job -->
+
+    <owl:Class rdf:about="http://www.iiitb.ac.in/IMT2018071/DM/portal2#job"/>
+    
+
+
+    <!-- http://www.iiitb.ac.in/IMT2018071/DM/portal2#job_address -->
+
+    <owl:Class rdf:about="http://www.iiitb.ac.in/IMT2018071/DM/portal2#job_address"/>
+    
+
+
+    <!-- http://www.iiitb.ac.in/IMT2018071/DM/portal2#skill -->
+
+    <owl:Class rdf:about="http://www.iiitb.ac.in/IMT2018071/DM/portal2#skill"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.iiitb.ac.in/IMT2018071/DM/portal2#applicant1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.iiitb.ac.in/IMT2018071/DM/portal2#applicant1">
+        <rdf:type rdf:resource="http://www.iiitb.ac.in/IMT2018071/DM/portal2#applicant"/>
+        <portal2:applicant_id rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1001</portal2:applicant_id>
+        <portal2:applicant_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">applicant1</portal2:applicant_name>
+        <portal2:dob rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">1995-05-15T01:22:13</portal2:dob>
+        <portal2:email rdf:datatype="http://www.w3.org/2001/XMLSchema#string">applicant1@gmail.com</portal2:email>
+        <portal2:gender rdf:datatype="http://www.w3.org/2001/XMLSchema#string">F</portal2:gender>
+        <portal2:password rdf:datatype="http://www.w3.org/2001/XMLSchema#string">applicant1_pass</portal2:password>
+        <portal2:phonenumber rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1234567890</portal2:phonenumber>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.iiitb.ac.in/IMT2018071/DM/portal2#applicant_details1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.iiitb.ac.in/IMT2018071/DM/portal2#applicant_details1">
+        <rdf:type rdf:resource="http://www.iiitb.ac.in/IMT2018071/DM/portal2#applicant_details"/>
+        <portal2:applicant_id_details rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1001</portal2:applicant_id_details>
+        <portal2:applicant_job_id rdf:datatype="http://www.w3.org/2001/XMLSchema#int">4001</portal2:applicant_job_id>
+        <portal2:applicant_status rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</portal2:applicant_status>
+        <portal2:application_id rdf:datatype="http://www.w3.org/2001/XMLSchema#int">2001</portal2:application_id>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.iiitb.ac.in/IMT2018071/DM/portal2#company1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.iiitb.ac.in/IMT2018071/DM/portal2#company1">
+        <rdf:type rdf:resource="http://www.iiitb.ac.in/IMT2018071/DM/portal2#company"/>
+        <portal2:offers rdf:resource="http://www.iiitb.ac.in/IMT2018071/DM/portal2#job1"/>
+        <portal2:company_address rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Nehru street, mumbai</portal2:company_address>
+        <portal2:company_contact rdf:datatype="http://www.w3.org/2001/XMLSchema#int">9876543210</portal2:company_contact>
+        <portal2:company_id rdf:datatype="http://www.w3.org/2001/XMLSchema#int">3001</portal2:company_id>
+        <portal2:company_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">company_name1</portal2:company_name>
+        <portal2:company_website rdf:datatype="http://www.w3.org/2001/XMLSchema#string">www.company1.com</portal2:company_website>
+        <portal2:email rdf:datatype="http://www.w3.org/2001/XMLSchema#string">company_name1@gmail.com</portal2:email>
+        <portal2:password rdf:datatype="http://www.w3.org/2001/XMLSchema#string">company_name1@123</portal2:password>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.iiitb.ac.in/IMT2018071/DM/portal2#job1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.iiitb.ac.in/IMT2018071/DM/portal2#job1">
+        <rdf:type rdf:resource="http://www.iiitb.ac.in/IMT2018071/DM/portal2#job"/>
+        <portal2:job_description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Job1 requires cloud computing</portal2:job_description>
+        <portal2:job_id rdf:datatype="http://www.w3.org/2001/XMLSchema#int">4001</portal2:job_id>
+        <portal2:job_title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">software developer</portal2:job_title>
+        <portal2:salary rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1000000</portal2:salary>
+        <portal2:vacancies rdf:datatype="http://www.w3.org/2001/XMLSchema#int">2</portal2:vacancies>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.iiitb.ac.in/IMT2018071/DM/portal2#job1_address -->
+
+    <owl:NamedIndividual rdf:about="http://www.iiitb.ac.in/IMT2018071/DM/portal2#job1_address">
+        <rdf:type rdf:resource="http://www.iiitb.ac.in/IMT2018071/DM/portal2#job_address"/>
+        <portal2:job_addr_id rdf:datatype="http://www.w3.org/2001/XMLSchema#int">5001</portal2:job_addr_id>
+        <portal2:location_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">electronic city, bangalore</portal2:location_name>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.iiitb.ac.in/IMT2018071/DM/portal2#skill1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.iiitb.ac.in/IMT2018071/DM/portal2#skill1">
+        <rdf:type rdf:resource="http://www.iiitb.ac.in/IMT2018071/DM/portal2#skill"/>
+        <portal2:skill_id rdf:datatype="http://www.w3.org/2001/XMLSchema#int">6001</portal2:skill_id>
+        <portal2:skill_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DevOps</portal2:skill_name>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
+

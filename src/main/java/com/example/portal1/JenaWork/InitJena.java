@@ -3,45 +3,107 @@ package com.example.portal1.JenaWork;
 import net.minidev.json.JSONObject;
 import org.apache.jena.ontology.OntModel;
 import org.apache.jena.ontology.OntModelSpec;
+import org.apache.jena.ontology.Ontology;
 import org.apache.jena.query.*;
+import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.ModelFactory;
 import org.apache.jena.shared.JenaException;
 import org.apache.jena.util.FileManager;
+import org.apache.jena.update.*;
+import org.apache.jena.riot.RDFDataMgr;
+import org.apache.jena.riot.RDFFormat;
+import org.apache.jena.riot.Lang;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.IOException;
+import java.io.SequenceInputStream;
+import java.nio.file.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class InitJena {
 
     private static QueryExecution qe;
-    private static String ontoFile = "portal1.owl";
+    private static String ontoFile1 = "file:///home/siddhartha/Documents/workspace-spring-tool-suite-4-4.14.0.RELEASE/portal1/portal1.owl";
+    private static String ontoFile2 = "file:///home/siddhartha/Documents/workspace-spring-tool-suite-4-4.14.0.RELEASE/portal1/final_portal2.owl";
+
+    //    http://www.learningsparql.com/2ndeditionexamples/ex013.rq
+    
+    public static void execUpdate(String queryString) {
+    	Dataset dataset = DatasetFactory.createTxnMem();
+    	String load = "LOAD <"+ ontoFile1 + ">";	
+    	UpdateAction.parseExecute(load, dataset);
+    	UpdateAction.parseExecute(queryString, dataset);
+    	try{
+    		File file = new File("/home/siddhartha/temp.owl");
+    		FileOutputStream out = new FileOutputStream(file);
+    		RDFDataMgr.write(out, dataset.getDefaultModel(), RDFFormat.RDFXML_PLAIN);
+    		System.out.println("fghjklp");
+    		out.close();} catch(IOException ie) {
+            ie.printStackTrace();
+        }   
+    }
+    
+//    public static ResulSet execQuery1(String queryString) {
+//    	OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
+//    	OWLOntology ontology = manager.loadOntologyFromOntologyDocument(new File("/home/galigator/myLocalDir/aura.owl"));
+// 
+//    }
 
     public static ResultSet execQuery(String queryString) {
 
-        OntModel ontoModel = ModelFactory.createOntologyModel(OntModelSpec.OWL_MEM, null);
+        OntModel ontoModel1 = ModelFactory.createOntologyModel(OntModelSpec.OWL_MEM, null);
+        OntModel ontoModel2 = ModelFactory.createOntologyModel(OntModelSpec.OWL_MEM, null);
         try {
             @SuppressWarnings("deprecation")
-			InputStream in = FileManager.get().open(ontoFile);
+			InputStream in1 = FileManager.get().open(ontoFile1);
+            @SuppressWarnings("deprecation")
+            InputStream in2 = FileManager.get().open(ontoFile2);          
+          
+                       
+//            InputStream map1 = FileManager.get().open(ontoFile3);
+//            SequenceInputStream ss = new SequenceInputStream(in1, in2);
+            ResultSet[] rs = new ResultSet[2]; // combining both statements in one
             try {
-                ontoModel.read(in, null);
-
+                ontoModel1.read(in1, null);
+                ontoModel2.read(in2, null);
+             
+                
+                Model ontoModel3 = ModelFactory.createUnion(ontoModel1, ontoModel2);
+                
                 System.out.println(queryString);
                 Query query = QueryFactory.create(queryString);
                 System.out.println(query);
 
                 //Execute the query and obtain results
-                qe = QueryExecutionFactory.create(query, ontoModel);
+                qe = QueryExecutionFactory.create(query, ontoModel3);
                 ResultSet results = qe.execSelect();
 
                 // Output query results
                 //ResultSetFormatter.out(System.out, results, query);
 
-                return results;
+                rs[0] = results;
+                
+//                ontoModel.read(in2, null);
+//
+//                System.out.println(queryString);
+//                query = QueryFactory.create(queryString);
+//                System.out.println(query);
+//
+//                //Execute the query and obtain results
+//                qe = QueryExecutionFactory.create(query, ontoModel);
+//                results = qe.execSelect();
+//
+//                rs[1] = results;
+                
+                return rs[0];
 
             } catch (Exception e) {
                 e.printStackTrace();
-            }
+            }            
         } catch (JenaException je) {
             System.err.println("ERROR" + je.getMessage());
             je.printStackTrace();
@@ -49,11 +111,12 @@ public class InitJena {
         }
         return null;
     }
-    
+      
     public static List<JSONObject> describeClass(String queryString){
     	System.out.println(queryString);
     	ResultSet resultSet = execQuery(queryString);
         List<JSONObject> list = new ArrayList<>();
+//        for(int i=0; i<2; i++) {
         while (resultSet.hasNext()) {
             JSONObject obj = new JSONObject();
             QuerySolution solution = resultSet.nextSolution();
@@ -76,9 +139,16 @@ public class InitJena {
             }
              
             System.out.println(y);
+//            if(i == 0) {
+//            	obj.put("pid", "portal1");
+//            }
+//            else {
+//            	obj.put("pid", "portal2");
+//            }
             obj.put(y,z);
             list.add(obj);
         }
+//        }
         return list;
     }   
     
@@ -104,9 +174,7 @@ public class InitJena {
             list.add(obj);
         }
         return list;
-    }
-    
-    
+    }   
     
     
 }

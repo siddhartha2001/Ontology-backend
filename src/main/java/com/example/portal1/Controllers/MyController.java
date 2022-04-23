@@ -91,6 +91,8 @@ public class MyController {
 		return jc; 
 	}
 	
+	@CrossOrigin
+	@RequestMapping("/seeker/getjobs")
 	public List<JSONObject> getAllJobs(){
 		String queryString = "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> "
 				+ "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> "
@@ -98,6 +100,22 @@ public class MyController {
 				+ "SELECT ?y ?z WHERE {"
 				+ " ?z rdf:type portal:Job_post ."
 				+ " ?z portal:job_id ?y"
+				+ "}";
+		
+		List<JSONObject> resultSet = InitJena.describeClass(queryString);
+        System.out.println(queryString);
+        return resultSet;
+	}
+	
+	@CrossOrigin
+	@RequestMapping("/seeker/test2")
+	public List<JSONObject> getLoc(){
+		String queryString = "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> "
+				+ "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> "
+				+ "PREFIX portal1: <http://www.iiitb.ac.in/IMT2018071/DM/portal1#> "
+				+ "PREFIX portal2: <http://www.iiitb.ac.in/IMT2018071/DM/portal2#> "
+				+ "SELECT ?y ?z WHERE {"
+				+ " ?y portal1:Offers ?z ."
 				+ "}";
 		
 		List<JSONObject> resultSet = InitJena.describeClass(queryString);
@@ -154,6 +172,36 @@ public class MyController {
 		List<JSONObject> resultSet = InitJena.describeClass(queryString);
         System.out.println(queryString);
         return resultSet;
+	}
+	
+	@CrossOrigin
+	@RequestMapping("/test")
+	public List<JSONObject> test(){
+		String queryString = "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> "
+				+ "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> "
+				+ "PREFIX xds: <http://www.w3.org/2001/XMLSchema#> " 
+				+ "PREFIX portal: <http://www.iiitb.ac.in/IMT2018071/DM/portal1#> "
+				+ "SELECT ?y ?z WHERE {"
+				+ " ?y ?z xds:string ."
+				+ "}";
+		
+		List<JSONObject> resultSet = InitJena.describeClass(queryString);
+        System.out.println(queryString);
+        return resultSet;
+	}
+	
+	@CrossOrigin
+	@RequestMapping("/test4")
+	public void test4() {
+		String queryString = "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> "
+				+ "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> "
+				+ "PREFIX xds: <http://www.w3.org/2001/XMLSchema#> " 
+				+ "PREFIX portal: <http://www.iiitb.ac.in/IMT2018071/DM/portal1#> "
+				+ "INSERT DATA {"
+				+ " portal:Seeker2 portal:GotJob portal:Job1 ."
+				+ "}";
+		
+		InitJena.execUpdate(queryString);
 	}
 	
 	

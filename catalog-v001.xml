@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+    <uri id="Imports Wizard Entry" name="http://www.iiitb.ac.in/IMT2018071/DM/portal2" uri="final_portal2.owl"/>
+    <uri id="Imports Wizard Entry" name="http://www.semanticweb.org/lenovo/ontologies/2022/2/untitled-ontology-4" uri="final_portal2.owl"/>
+    <uri id="Imports Wizard Entry" name="http://www.iiitb.ac.in/IMT2018071/DM/portal1" uri="portal1.owl"/>
+    <group id="Folder Repository, directory=, recursive=true, Auto-Update=true, version=2" prefer="public" xml:base="">
+        <uri id="Automatically generated entry, Timestamp=1650622288726" name="http://www.iiitb.ac.in/IMT2018071/DM/portal1" uri="portal1.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1650622288726" name="duplicate:http://www.semanticweb.org/lenovo/ontologies/2022/2/untitled-ontology-4" uri="portal2.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1650622288726" name="duplicate:http://www.semanticweb.org/lenovo/ontologies/2022/2/untitled-ontology-4" uri="portal3.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1650622288726" name="duplicate:http://www.semanticweb.org/lenovo/ontologies/2022/2/untitled-ontology-4" uri="final_portal2.owl"/>
+    </group>
+</catalog>
