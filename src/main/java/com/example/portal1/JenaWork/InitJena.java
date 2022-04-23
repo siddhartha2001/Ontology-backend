@@ -174,7 +174,18 @@ public class InitJena {
             list.add(obj);
         }
         return list;
-    }   
+    }  
+    
+    public static int getCount(String queryString){
+    	System.out.println(queryString);
+    	ResultSet resultSet = execQuery(queryString);
+        int x=0;
+        while (resultSet.hasNext()) {
+        	x++;
+        	QuerySolution solution = resultSet.nextSolution(); 
+        }
+        return x;
+    } 
     
     
 }

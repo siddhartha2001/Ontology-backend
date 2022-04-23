@@ -2,6 +2,8 @@ package com.example.portal1.Controllers;
 
 import com.example.portal1.JenaWork.InitJena;
 import com.example.portal1.Controllers.LoginRequest;
+import com.example.portal1.Controllers.Request.SeekerSignUp;
+
 import net.minidev.json.JSONObject;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -198,10 +200,93 @@ public class MyController {
 				+ "PREFIX xds: <http://www.w3.org/2001/XMLSchema#> " 
 				+ "PREFIX portal: <http://www.iiitb.ac.in/IMT2018071/DM/portal1#> "
 				+ "INSERT DATA {"
-				+ " portal:Seeker2 portal:GotJob portal:Job1 ."
+				+ " portal:Seeker2 portal:GotLoginRequestJob portal:Job1 ."
 				+ "}";
 		
 		InitJena.execUpdate(queryString);
+	}
+	
+	public int getInstanceCount(String cls) {
+		
+		String queryString = "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> "
+				+ "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> "
+				+ "PREFIX xds: <http://www.w3.org/2001/XMLSchema#> " 
+				+ "PREFIX portal: <http://www.iiitb.ac.in/IMT2018071/DM/portal1#> "
+				+ "SELECT ?z WHERE {"
+				+ " ?z rdf:type portal:"
+				+ cls
+				+ " ."
+				+ "}";
+		
+		int count = InitJena.getCount(queryString);
+		return count;
+	}
+	
+	public boolean checkEmail(String email, String usrType) {
+				
+		String queryString = "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> "
+				+ "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> "
+				+ "PREFIX xds: <http://www.w3.org/2001/XMLSchema#> " 
+				+ "PREFIX portal: <http://www.iiitb.ac.in/IMT2018071/DM/portal1#> "
+				+ "SELECT ?z WHERE {"
+				+ " ?z rdf:type portal:"
+				+ usrType
+				+ " ."
+				+ " ?z portal:email \""
+				+ email
+				+ "\" }";
+		
+		List<JSONObject> resultSet = InitJena.getItems(queryString);
+		return resultSet.isEmpty();
+	}
+	
+	@CrossOrigin
+	@RequestMapping("/signup/seeker")
+	public String addSeeker(@RequestBody SeekerSignUp seekerSignUp) {
+		int cnt = getInstanceCount("Seeker")+1;
+		int id = 2000 + cnt;
+		String inst = "Seeker" + Integer.toString(cnt);
+		
+		if(checkEmail(seekerSignUp.getUsername(), "Seeker") == false) {
+			return "Error: Email already exists";
+		}
+		
+		System.out.println(seekerSignUp.getGender());
+		
+		String queryString = "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> "
+				+ "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> "
+				+ "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> " 
+				+ "PREFIX portal: <http://www.iiitb.ac.in/IMT2018071/DM/portal1#> "
+				+ "PREFIX owl: <http://www.w3.org/2002/07/owl#> "
+				+ "INSERT DATA {"
+				+ " portal:"
+				+ inst
+				+ " rdf:type owl:NamedIndividual ;"
+				+ " rdf:type portal:Seeker ;"
+				+ " portal:User_Id \""
+				+ Integer.toString(id)
+				+ "\"^^xsd:integer ; portal:gender \""
+				+ seekerSignUp.getGender()
+				+ "\" ; portal:email \""
+				+ seekerSignUp.getUsername()
+				+ "\" ; portal:password \""
+				+ seekerSignUp.getPassword()
+				+ "\" ; portal:first_name \""
+				+ seekerSignUp.GetFirstName()
+				+ "\" ; portal:last_name \""
+				+ seekerSignUp.GetLastName()
+				+ "\" ; portal:contact_number \""
+				+ seekerSignUp.getNumber()
+				+ "\"^^xsd:integer ; portal:User_type \""
+				+ seekerSignUp.getRole()
+				+ "\" ; portal:date_of_birth \""
+				+ seekerSignUp.GetDob()
+				+ "\"^^xsd:dateTime . }";
+		
+		System.out.println(id);
+		
+		InitJena.execUpdate(queryString);
+		return "Success";
 	}
 	
 	
