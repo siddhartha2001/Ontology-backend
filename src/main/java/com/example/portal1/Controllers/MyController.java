@@ -3,6 +3,7 @@ package com.example.portal1.Controllers;
 import com.example.portal1.JenaWork.InitJena;
 import com.example.portal1.Controllers.LoginRequest;
 import com.example.portal1.Controllers.Request.SeekerSignUp;
+import com.example.portal1.Controllers.Request.*;
 
 import net.minidev.json.JSONObject;
 import org.springframework.http.MediaType;
@@ -183,11 +184,15 @@ public class MyController {
 				+ "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> "
 				+ "PREFIX xds: <http://www.w3.org/2001/XMLSchema#> " 
 				+ "PREFIX portal: <http://www.iiitb.ac.in/IMT2018071/DM/portal1#> "
-				+ "SELECT ?y ?z WHERE {"
-				+ " ?y ?z xds:string ."
+				+ "PREFIX portal: <http://www.iiitb.ac.in/IMT2018071/DM/portal1#> "
+				+ "PREFIX owl: <http://www.w3.org/2002/07/owl#> "
+				+ "SELECT ?z WHERE {"
+				+ "{ ?z rdf:type portal:Company } UNION"
+				+ "{ portal:Company owl:sameAs ?y ."
+				+ " ?z rdf:type ?y}"
 				+ "}";
 		
-		List<JSONObject> resultSet = InitJena.describeClass(queryString);
+		List<JSONObject> resultSet = InitJena.getItems(queryString);
         System.out.println(queryString);
         return resultSet;
 	}
@@ -242,13 +247,15 @@ public class MyController {
 	
 	@CrossOrigin
 	@RequestMapping("/signup/seeker")
-	public String addSeeker(@RequestBody SeekerSignUp seekerSignUp) {
+	public JSONObject addSeeker(@RequestBody SeekerSignUp seekerSignUp) {
 		int cnt = getInstanceCount("Seeker")+1;
 		int id = 2000 + cnt;
 		String inst = "Seeker" + Integer.toString(cnt);
+		JSONObject obj = new JSONObject();
 		
 		if(checkEmail(seekerSignUp.getUsername(), "Seeker") == false) {
-			return "Error: Email already exists";
+			obj.put("status", "Error: Email already exists");
+			return obj;
 		}
 		
 		System.out.println(seekerSignUp.getGender());
@@ -286,7 +293,59 @@ public class MyController {
 		System.out.println(id);
 		
 		InitJena.execUpdate(queryString);
-		return "Success";
+		obj.put("status", "Success");
+		obj.put("User_Id", Integer.toString(id));
+		return obj;
+	}
+	
+	@CrossOrigin
+	@RequestMapping("/signup/company")
+	public JSONObject addCompany(@RequestBody CompanySignUp companySignUp) {
+		int cnt = getInstanceCount("Company")+1;
+		int id = 1000 + cnt;
+		String inst = "Company" + Integer.toString(cnt);
+		JSONObject obj = new JSONObject();
+		
+		if(checkEmail(companySignUp.getUsername(), "Company") == false) {
+			obj.put("status", "Error: Email already exists");
+			return obj;
+		}
+		
+		System.out.println(companySignUp.getURL());
+		
+		String queryString = "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> "
+				+ "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> "
+				+ "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> " 
+				+ "PREFIX portal: <http://www.iiitb.ac.in/IMT2018071/DM/portal1#> "
+				+ "PREFIX owl: <http://www.w3.org/2002/07/owl#> "
+				+ "INSERT DATA {"
+				+ " portal:"
+				+ inst
+				+ " rdf:type owl:NamedIndividual ;"
+				+ " rdf:type portal:Company ;"
+				+ " portal:User_Id \""
+				+ Integer.toString(id)
+				+ "\"^^xsd:integer ; portal:url \""
+				+ companySignUp.getURL()
+				+ "\" ; portal:email \""
+				+ companySignUp.getUsername()
+				+ "\" ; portal:password \""
+				+ companySignUp.getPassword()
+				+ "\" ; portal:cname \""
+				+ companySignUp.getName()
+				+ "\" ; portal:c_desc \""
+				+ companySignUp.getDesc()
+				+ "\" ; portal:contact_number \""
+				+ companySignUp.getNumber()
+				+ "\"^^xsd:integer ; portal:User_type \"company\""
+				+ " .}";
+		
+		System.out.println(id);
+		
+		InitJena.execUpdate(queryString);
+		obj.put("status", "Success");
+		obj.put("User_Id", Integer.toString(id));
+		return obj;
 	}
 	
 	

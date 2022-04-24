@@ -29,7 +29,7 @@ public class InitJena {
     private static QueryExecution qe;
     private static String ontoFile1 = "file:///home/siddhartha/Documents/workspace-spring-tool-suite-4-4.14.0.RELEASE/portal1/portal1.owl";
     private static String ontoFile2 = "file:///home/siddhartha/Documents/workspace-spring-tool-suite-4-4.14.0.RELEASE/portal1/final_portal2.owl";
-
+    private static String ontoFile3 = "file:///home/siddhartha/map123.owl";
     //    http://www.learningsparql.com/2ndeditionexamples/ex013.rq
     
     public static void execUpdate(String queryString) {
@@ -45,23 +45,21 @@ public class InitJena {
     		out.close();} catch(IOException ie) {
             ie.printStackTrace();
         }   
-    }
-    
-//    public static ResulSet execQuery1(String queryString) {
-//    	OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
-//    	OWLOntology ontology = manager.loadOntologyFromOntologyDocument(new File("/home/galigator/myLocalDir/aura.owl"));
-// 
-//    }
+    }    
+
 
     public static ResultSet execQuery(String queryString) {
 
         OntModel ontoModel1 = ModelFactory.createOntologyModel(OntModelSpec.OWL_MEM, null);
         OntModel ontoModel2 = ModelFactory.createOntologyModel(OntModelSpec.OWL_MEM, null);
+        OntModel map12 = ModelFactory.createOntologyModel(OntModelSpec.OWL_MEM, null);
         try {
             @SuppressWarnings("deprecation")
 			InputStream in1 = FileManager.get().open(ontoFile1);
             @SuppressWarnings("deprecation")
-            InputStream in2 = FileManager.get().open(ontoFile2);          
+            InputStream in2 = FileManager.get().open(ontoFile2);
+            @SuppressWarnings("deprecation")
+            InputStream in3 = FileManager.get().open(ontoFile3);
           
                        
 //            InputStream map1 = FileManager.get().open(ontoFile3);
@@ -70,16 +68,18 @@ public class InitJena {
             try {
                 ontoModel1.read(in1, null);
                 ontoModel2.read(in2, null);
+                map12.read(in3, null);
              
                 
-                Model ontoModel3 = ModelFactory.createUnion(ontoModel1, ontoModel2);
+                Model temp = ModelFactory.createUnion(ontoModel1, ontoModel2);
+                temp = ModelFactory.createUnion(map12, temp);
                 
                 System.out.println(queryString);
                 Query query = QueryFactory.create(queryString);
                 System.out.println(query);
 
                 //Execute the query and obtain results
-                qe = QueryExecutionFactory.create(query, ontoModel3);
+                qe = QueryExecutionFactory.create(query, temp);
                 ResultSet results = qe.execSelect();
 
                 // Output query results
