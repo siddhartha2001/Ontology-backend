@@ -14,10 +14,10 @@ public class SeekerSignUp {
 	
 	public SeekerSignUp(@JsonProperty("email") String username,
 						@JsonProperty("password") String password,
-						@JsonProperty("role") String role,
+						@JsonProperty("userRole") String role,
 						@JsonProperty("gender") String gender,
-						@JsonProperty("first_name") String first_name,
-						@JsonProperty("last_name") String last_name,
+						@JsonProperty("fname") String first_name,
+						@JsonProperty("lname") String last_name,
 						@JsonProperty("phone") String number,
 						@JsonProperty("dob") String dob) {
 		this.username = username;
