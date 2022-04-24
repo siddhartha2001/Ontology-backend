@@ -55,19 +55,36 @@ public class MyController {
 	
 	@CrossOrigin
 	@RequestMapping("/search/company")
-	public List<JSONObject> getJobsCompany(@RequestParam String company_name){
+	public List<JSONObject> getJobsCompany(@RequestBody CompanyNameRequest company_name){
 		String queryString = "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> "
 				+ "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> "
 				+ "PREFIX portal: <http://www.iiitb.ac.in/IMT2018071/DM/portal1#> "
-				+ "SELECT ?y ?z WHERE {"
-				+ "?x portal:cname \""
-				+ company_name
-				+ "\" . ?x portal:Offers ?v1 ."
-				+ "?v1 portal:job_title ?z ."
-				+ "?v1 portal:job_id ?y"
+				+ "SELECT ?x ?y ?z WHERE {"
+				+ "?v1 portal:cname \""
+				+ company_name.getCompanyName()
+				+ "\" . ?v1 portal:Offers ?x ."
+				+ "?x ?y ?z ."
 				+ "}";
 		
-		List<JSONObject> resultSet = InitJena.describeClass(queryString, 2, "job_id", "job_title");
+		List<JSONObject> resultSet = InitJena.getClasses(queryString);
+        System.out.println(queryString);
+        return resultSet;
+	}
+	
+	@CrossOrigin
+	@RequestMapping("/search/job")
+	public List<JSONObject> getJobsName(@RequestBody JobNameRequest job_name){
+		String queryString = "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> "
+				+ "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> "
+				+ "PREFIX portal: <http://www.iiitb.ac.in/IMT2018071/DM/portal1#> "
+				+ "SELECT ?x ?y ?z WHERE {"
+				+ "?x portal:job_title \""
+				+ job_name.getJobName()
+				+ "\" ."
+				+ "?x ?y ?z ."
+				+ "}";
+		
+		List<JSONObject> resultSet = InitJena.getClasses(queryString);
         System.out.println(queryString);
         return resultSet;
 	}
@@ -209,12 +226,13 @@ public class MyController {
 				+ "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> "
 				+ "PREFIX xds: <http://www.w3.org/2001/XMLSchema#> " 
 				+ "PREFIX portal: <http://www.iiitb.ac.in/IMT2018071/DM/portal1#> "
+				+ "PREFIX p2: <http://www.iiitb.ac.in/IMT2018071/DM/portal2#> "
 				+ "SELECT ?y ?z WHERE{"
-				+ " ?y rdf:type portal:Experience_details ."
-				+ " ?z portal:Offers portal:Job1"
+				+ " ?y rdf:type p2:job ."
+				+ " ?z rdf:type p2:skill"
 				+ "}";
 		
-		List<JSONObject> resultSet = InitJena.describeClass(queryString, 1, "Users", "Job");
+		List<JSONObject> resultSet = InitJena.describeClass(queryString, 2, "Users", "Job");
 		return resultSet;
 	}
 	
@@ -457,7 +475,7 @@ public class MyController {
 				+ "PREFIX xds: <http://www.w3.org/2001/XMLSchema#> " 
 				+ "PREFIX portal: <http://www.iiitb.ac.in/IMT2018071/DM/portal1#> "
 				+ "SELECT ?z WHERE {"
-				+ " ?z rdf:type portal:Skill ."
+				+ " ?z rdf:type portal:Skills ."
 				+ " ?z portal:skill \""
 				+ s1
 				+ "\" }";
@@ -496,7 +514,7 @@ public class MyController {
 					+ inst
 					+ " }"
 					+ "WHERE {"
-					+" ?x portal:User_Id portal:"
+					+" ?x portal:User_Id "
 					+ skillAddRequest.getId()
 					+ " }";
 		}
