@@ -236,126 +236,127 @@ public class MyController {
 		return count;
 	}
 	
-//	public boolean checkEmail(String email, String usrType) {
-//				
-//		String queryString = "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> "
-//				+ "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> "
-//				+ "PREFIX xds: <http://www.w3.org/2001/XMLSchema#> " 
-//				+ "PREFIX portal: <http://www.iiitb.ac.in/IMT2018071/DM/portal1#> "
-//				+ "SELECT ?z WHERE {"
-//				+ " ?z rdf:type portal:"
-//				+ usrType
-//				+ " ."
-//				+ " ?z portal:email \""
-//				+ email
-//				+ "\" }";
-//		
-//		List<JSONObject> resultSet = InitJena.getItems(queryString);
-//		return resultSet.isEmpty();
-//	}
+	public boolean checkEmail(String email, String usrType) {
+				
+		String queryString = "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> "
+				+ "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> "
+				+ "PREFIX xds: <http://www.w3.org/2001/XMLSchema#> " 
+				+ "PREFIX portal: <http://www.iiitb.ac.in/IMT2018071/DM/portal1#> "
+				+ "SELECT ?z WHERE {"
+				+ " ?z rdf:type portal:"
+				+ usrType
+				+ " ."
+				+ " ?z portal:email \""
+				+ email
+				+ "\" }";
+		
+		List<JSONObject> resultSet = InitJena.getItems(queryString, 1);
+		return resultSet.isEmpty();
+	}
 	
-//	@CrossOrigin
-//	@RequestMapping("/signup/seeker")
-//	public JSONObject addSeeker(@RequestBody SeekerSignUp seekerSignUp) {
-//		int cnt = getInstanceCount("Seeker")+1;
-//		int id = 2000 + cnt;
-//		String inst = "Seeker" + Integer.toString(cnt);
-//		JSONObject obj = new JSONObject();
-//		
-//		if(checkEmail(seekerSignUp.getUsername(), "Seeker") == false) {
-//			obj.put("status", "Error: Email already exists");
-//			return obj;
-//		}
-//		
-//		System.out.println(seekerSignUp.getGender());
-//		
-//		String queryString = "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> "
-//				+ "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> "
-//				+ "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> " 
-//				+ "PREFIX portal: <http://www.iiitb.ac.in/IMT2018071/DM/portal1#> "
-//				+ "PREFIX owl: <http://www.w3.org/2002/07/owl#> "
-//				+ "INSERT DATA {"
-//				+ " portal:"
-//				+ inst
-//				+ " rdf:type owl:NamedIndividual ;"
-//				+ " rdf:type portal:Seeker ;"
-//				+ " portal:User_Id \""
-//				+ Integer.toString(id)
-//				+ "\"^^xsd:integer ; portal:gender \""
-//				+ seekerSignUp.getGender()
-//				+ "\" ; portal:email \""
-//				+ seekerSignUp.getUsername()
-//				+ "\" ; portal:password \""
-//				+ seekerSignUp.getPassword()
-//				+ "\" ; portal:first_name \""
-//				+ seekerSignUp.GetFirstName()
-//				+ "\" ; portal:last_name \""
-//				+ seekerSignUp.GetLastName()
-//				+ "\" ; portal:contact_number \""
-//				+ seekerSignUp.getNumber()
-//				+ "\"^^xsd:integer ; portal:User_type \""
-//				+ seekerSignUp.getRole()
-//				+ "\" ; portal:date_of_birth \""
-//				+ seekerSignUp.GetDob()
-//				+ "\"^^xsd:dateTime . }";
-//		
-//		System.out.println(id);
-//		
-//		InitJena.execUpdate(queryString);
-//		obj.put("status", "Success");
-//		obj.put("User_Id", Integer.toString(id));
-//		return obj;
-//	}
-//	
-//	@CrossOrigin
-//	@RequestMapping("/signup/company")
-//	public JSONObject addCompany(@RequestBody CompanySignUp companySignUp) {
-//		int cnt = getInstanceCount("Company")+1;
-//		int id = 1000 + cnt;
-//		String inst = "Company" + Integer.toString(cnt);
-//		JSONObject obj = new JSONObject();
-//		
-//		if(checkEmail(companySignUp.getUsername(), "Company") == false) {
-//			obj.put("status", "Error: Email already exists");
-//			return obj;
-//		}
-//		
-//		System.out.println(companySignUp.getURL());
-//		
-//		String queryString = "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> "
-//				+ "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> "
-//				+ "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> " 
-//				+ "PREFIX portal: <http://www.iiitb.ac.in/IMT2018071/DM/portal1#> "
-//				+ "PREFIX owl: <http://www.w3.org/2002/07/owl#> "
-//				+ "INSERT DATA {"
-//				+ " portal:"
-//				+ inst
-//				+ " rdf:type owl:NamedIndividual ;"
-//				+ " rdf:type portal:Company ;"
-//				+ " portal:User_Id \""
-//				+ Integer.toString(id)
-//				+ "\"^^xsd:integer ; portal:url \""
-//				+ companySignUp.getURL()
-//				+ "\" ; portal:email \""
-//				+ companySignUp.getUsername()
-//				+ "\" ; portal:password \""
-//				+ companySignUp.getPassword()
-//				+ "\" ; portal:cname \""
-//				+ companySignUp.getName()
-//				+ "\" ; portal:c_desc \""
-//				+ companySignUp.getDesc()
-//				+ "\" ; portal:contact_number \""
-//				+ companySignUp.getNumber()
-//				+ "\"^^xsd:integer ; portal:User_type \"company\""
-//				+ " .}";
-//		
-//		System.out.println(id);
-//		
-//		InitJena.execUpdate(queryString);
-//		obj.put("status", "Success");
-//		obj.put("User_Id", Integer.toString(id));
-//		return obj;
-//	}
+	
+	@CrossOrigin
+	@RequestMapping("/signup/seeker")
+	public JSONObject addSeeker(@RequestBody SeekerSignUp seekerSignUp) {
+		int cnt = getInstanceCount("Seeker")+1;
+		int id = 2000 + cnt;
+		String inst = "Seeker" + Integer.toString(cnt);
+		JSONObject obj = new JSONObject();
+		
+		if(checkEmail(seekerSignUp.getUsername(), "Seeker") == false) {
+			obj.put("status", "Error: Email already exists");
+			return obj;
+		}
+		
+		System.out.println(seekerSignUp.getGender());
+		
+		String queryString = "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> "
+				+ "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> "
+				+ "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> " 
+				+ "PREFIX portal: <http://www.iiitb.ac.in/IMT2018071/DM/portal1#> "
+				+ "PREFIX owl: <http://www.w3.org/2002/07/owl#> "
+				+ "INSERT DATA {"
+				+ " portal:"
+				+ inst
+				+ " rdf:type owl:NamedIndividual ;"
+				+ " rdf:type portal:Seeker ;"
+				+ " portal:User_Id \""
+				+ Integer.toString(id)
+				+ "\"^^xsd:integer ; portal:gender \""
+				+ seekerSignUp.getGender()
+				+ "\" ; portal:email \""
+				+ seekerSignUp.getUsername()
+				+ "\" ; portal:password \""
+				+ seekerSignUp.getPassword()
+				+ "\" ; portal:first_name \""
+				+ seekerSignUp.GetFirstName()
+				+ "\" ; portal:last_name \""
+				+ seekerSignUp.GetLastName()
+				+ "\" ; portal:contact_number \""
+				+ seekerSignUp.getNumber()
+				+ "\"^^xsd:integer ; portal:User_type \""
+				+ seekerSignUp.getRole()
+				+ "\" ; portal:date_of_birth \""
+				+ seekerSignUp.GetDob()
+				+ "\"^^xsd:dateTime . }";
+		
+		System.out.println(id);
+		
+		InitJena.execUpdate(queryString);
+		obj.put("status", "Success");
+		obj.put("User_Id", Integer.toString(id));
+		return obj;
+	}
+	
+	@CrossOrigin
+	@RequestMapping("/signup/company")
+	public JSONObject addCompany(@RequestBody CompanySignUp companySignUp) {
+		int cnt = getInstanceCount("Company")+1;
+		int id = 1000 + cnt;
+		String inst = "Company" + Integer.toString(cnt);
+		JSONObject obj = new JSONObject();
+		
+		if(checkEmail(companySignUp.getUsername(), "Company") == false) {
+			obj.put("status", "Error: Email already exists");
+			return obj;
+		}
+		
+		System.out.println(companySignUp.getURL());
+		
+		String queryString = "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> "
+				+ "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> "
+				+ "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> " 
+				+ "PREFIX portal: <http://www.iiitb.ac.in/IMT2018071/DM/portal1#> "
+				+ "PREFIX owl: <http://www.w3.org/2002/07/owl#> "
+				+ "INSERT DATA {"
+				+ " portal:"
+				+ inst
+				+ " rdf:type owl:NamedIndividual ;"
+				+ " rdf:type portal:Company ;"
+				+ " portal:User_Id \""
+				+ Integer.toString(id)
+				+ "\"^^xsd:integer ; portal:url \""
+				+ companySignUp.getURL()
+				+ "\" ; portal:email \""
+				+ companySignUp.getUsername()
+				+ "\" ; portal:password \""
+				+ companySignUp.getPassword()
+				+ "\" ; portal:cname \""
+				+ companySignUp.getName()
+				+ "\" ; portal:c_desc \""
+				+ companySignUp.getDesc()
+				+ "\" ; portal:contact_number \""
+				+ companySignUp.getNumber()
+				+ "\"^^xsd:integer ; portal:User_type \"company\""
+				+ " .}";
+		
+		System.out.println(id);
+		
+		InitJena.execUpdate(queryString);
+		obj.put("status", "Success");
+		obj.put("User_Id", Integer.toString(id));
+		return obj;
+	}
 
 	
 	@CrossOrigin
@@ -450,81 +451,73 @@ public class MyController {
 		return obj;
 	}
 	
-//	public List<JSONObject> checkSkill(String s1) {
-//		String queryString = "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> "
-//				+ "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> "
-//				+ "PREFIX xds: <http://www.w3.org/2001/XMLSchema#> " 
-//				+ "PREFIX portal: <http://www.iiitb.ac.in/IMT2018071/DM/portal1#> "
-//				+ "SELECT ?z WHERE {"
-//				+ " ?z rdf:type portal:Skill ."
-//				+ " ?z portal:skill \""
-//				+ s1
-//				+ "\" }";
-//		
-//		List<JSONObject> resultSet = InitJena.getItems(queryString);
-//		return resultSet;
-//	}
-//	
-//	@CrossOrigin
-//	@RequestMapping("/seeker/addskill")
-//	public JSONObject addSkill(@RequestBody SkillAddRequest skillAddRequest) {
-//		JSONObject obj = new JSONObject();
-//		String queryString;
-//		if(checkSkill(skillAddRequest.getName()).isEmpty() == true) {
-//			int cnt = getInstanceCount("Skills")+1;
-//			int sid = 100 + cnt;
-//			String inst = "Skill" + Integer.toString(cnt);
-//			System.out.println("ghjofcdhfuvihoisjpd");
-//			
-//			queryString = "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> "
-//					+ "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> "
-//					+ "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> " 
-//					+ "PREFIX portal: <http://www.iiitb.ac.in/IMT2018071/DM/portal1#> "
-//					+ "PREFIX owl: <http://www.w3.org/2002/07/owl#> "
-//					+ "INSERT {"
-//					+ " portal:"
-//					+ inst
-//					+ " rdf:type owl:NamedIndividual ;"
-//					+ " rdf:type portal:Skills ;"
-//					+ " portal:skill_id \""
-//					+ Integer.toString(sid)
-//					+ "\"^^xsd:integer ; portal:skill \""
-//					+ skillAddRequest.getName()
-//					+ "\" ."
-//					+ "?x portal:HasSkills portal:"	
-//					+ inst
-//					+ " }"
-//					+ "WHERE {"
-//					+" ?x portal:User_Id portal:"
-//					+ skillAddRequest.getId()
-//					+ " }";
-//		}
-//		else {
-//			queryString = "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> "
-//					+ "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> "
-//					+ "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> " 
-//					+ "PREFIX portal: <http://www.iiitb.ac.in/IMT2018071/DM/portal1#> "
-//					+ "PREFIX owl: <http://www.w3.org/2002/07/owl#> "
-//					+ "INSERT {"
-//					+ " ?x portal:HasSkills ?y }"
-//					+ "WHERE { "
-//					+ " ?x portal:User_Id portal:"
-//					+ skillAddRequest.getId()
-//					+ " . ?y portal:skill portal:"
-//					+ skillAddRequest.getName()
-//					+ " }";
-//		}
-//		
-//		InitJena.execUpdate(queryString);
-//		obj.put("status", "Success");
-//		return obj;
-//	}
+	public List<JSONObject> checkSkill(String s1) {
+		String queryString = "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> "
+				+ "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> "
+				+ "PREFIX xds: <http://www.w3.org/2001/XMLSchema#> " 
+				+ "PREFIX portal: <http://www.iiitb.ac.in/IMT2018071/DM/portal1#> "
+				+ "SELECT ?z WHERE {"
+				+ " ?z rdf:type portal:Skill ."
+				+ " ?z portal:skill \""
+				+ s1
+				+ "\" }";
+		
+		List<JSONObject> resultSet = InitJena.getItems(queryString, 1);
+		return resultSet;
+	}
 	
-	
-	
-	
-	
-	
-	
-	
+	@CrossOrigin
+	@RequestMapping("/seeker/addskill")
+	public JSONObject addSkill(@RequestBody SkillAddRequest skillAddRequest) {
+		JSONObject obj = new JSONObject();
+		String queryString;
+		if(checkSkill(skillAddRequest.getName()).isEmpty() == true) {
+			int cnt = getInstanceCount("Skills")+1;
+			int sid = 100 + cnt;
+			String inst = "Skill" + Integer.toString(cnt);
+			System.out.println("ghjofcdhfuvihoisjpd");
+			
+			queryString = "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> "
+					+ "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> "
+					+ "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> " 
+					+ "PREFIX portal: <http://www.iiitb.ac.in/IMT2018071/DM/portal1#> "
+					+ "PREFIX owl: <http://www.w3.org/2002/07/owl#> "
+					+ "INSERT {"
+					+ " portal:"
+					+ inst
+					+ " rdf:type owl:NamedIndividual ;"
+					+ " rdf:type portal:Skills ;"
+					+ " portal:skill_id \""
+					+ Integer.toString(sid)
+					+ "\"^^xsd:integer ; portal:skill \""
+					+ skillAddRequest.getName()
+					+ "\" ."
+					+ "?x portal:HasSkills portal:"	
+					+ inst
+					+ " }"
+					+ "WHERE {"
+					+" ?x portal:User_Id portal:"
+					+ skillAddRequest.getId()
+					+ " }";
+		}
+		else {
+			queryString = "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> "
+					+ "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> "
+					+ "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> " 
+					+ "PREFIX portal: <http://www.iiitb.ac.in/IMT2018071/DM/portal1#> "
+					+ "PREFIX owl: <http://www.w3.org/2002/07/owl#> "
+					+ "INSERT {"
+					+ " ?x portal:HasSkills ?y }"
+					+ "WHERE { "
+					+ " ?x portal:User_Id portal:"
+					+ skillAddRequest.getId()
+					+ " . ?y portal:skill portal:"
+					+ skillAddRequest.getName()
+					+ " }";
+		}
+		
+		InitJena.execUpdate(queryString);
+		obj.put("status", "Success");
+		return obj;
+	}	
 }

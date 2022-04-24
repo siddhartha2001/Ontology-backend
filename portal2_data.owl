@@ -1,0 +1,105 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/lenovo/ontologies/2022/2/untitled-ontology-4"
+     xml:base="http://www.semanticweb.org/lenovo/ontologies/2022/2/untitled-ontology-4"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:portal2="http://www.iiitb.ac.in/IMT2018071/DM/portal2#"
+     xmlns:untitled-ontology-4="http://www.semanticweb.org/lenovo/ontologies/2022/2/untitled-ontology-4#">
+    <owl:Ontology rdf:about="http://www.iiitb.ac.in/IMT2018071/DM/portal2"/>
+
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.iiitb.ac.in/IMT2018071/DM/portal2#applicant1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.iiitb.ac.in/IMT2018071/DM/portal2#applicant1">
+        <rdf:type rdf:resource="http://www.iiitb.ac.in/IMT2018071/DM/portal2#applicant"/>
+        <portal2:applicant_id rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1001</portal2:applicant_id>
+        <portal2:applicant_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">applicant1</portal2:applicant_name>
+        <portal2:dob rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">1995-05-15T01:22:13</portal2:dob>
+        <portal2:email rdf:datatype="http://www.w3.org/2001/XMLSchema#string">applicant1@gmail.com</portal2:email>
+        <portal2:gender rdf:datatype="http://www.w3.org/2001/XMLSchema#string">F</portal2:gender>
+        <portal2:password rdf:datatype="http://www.w3.org/2001/XMLSchema#string">applicant1_pass</portal2:password>
+        <portal2:phonenumber rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1234567890</portal2:phonenumber>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.iiitb.ac.in/IMT2018071/DM/portal2#applicant_details1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.iiitb.ac.in/IMT2018071/DM/portal2#applicant_details1">
+        <rdf:type rdf:resource="http://www.iiitb.ac.in/IMT2018071/DM/portal2#applicant_details"/>
+        <portal2:applicant_id_details rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1001</portal2:applicant_id_details>
+        <portal2:applicant_job_id rdf:datatype="http://www.w3.org/2001/XMLSchema#int">4001</portal2:applicant_job_id>
+        <portal2:applicant_status rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pending</portal2:applicant_status>
+        <portal2:application_id rdf:datatype="http://www.w3.org/2001/XMLSchema#int">2001</portal2:application_id>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.iiitb.ac.in/IMT2018071/DM/portal2#company1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.iiitb.ac.in/IMT2018071/DM/portal2#company1">
+        <rdf:type rdf:resource="http://www.iiitb.ac.in/IMT2018071/DM/portal2#company"/>
+        <portal2:offers rdf:resource="http://www.iiitb.ac.in/IMT2018071/DM/portal2#job1"/>
+        <portal2:company_address rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Nehru street, mumbai</portal2:company_address>
+        <portal2:company_contact rdf:datatype="http://www.w3.org/2001/XMLSchema#int">9876543210</portal2:company_contact>
+        <portal2:company_id rdf:datatype="http://www.w3.org/2001/XMLSchema#int">3001</portal2:company_id>
+        <portal2:company_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">company_name1</portal2:company_name>
+        <portal2:company_website rdf:datatype="http://www.w3.org/2001/XMLSchema#string">www.company1.com</portal2:company_website>
+        <portal2:email rdf:datatype="http://www.w3.org/2001/XMLSchema#string">company_name1@gmail.com</portal2:email>
+        <portal2:password rdf:datatype="http://www.w3.org/2001/XMLSchema#string">company_name1@123</portal2:password>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.iiitb.ac.in/IMT2018071/DM/portal2#job1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.iiitb.ac.in/IMT2018071/DM/portal2#job1">
+        <rdf:type rdf:resource="http://www.iiitb.ac.in/IMT2018071/DM/portal2#job"/>
+        <portal2:job_description rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Job1 requires cloud computing</portal2:job_description>
+        <portal2:job_id rdf:datatype="http://www.w3.org/2001/XMLSchema#int">4001</portal2:job_id>
+        <portal2:job_title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">software developer</portal2:job_title>
+        <portal2:salary rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1000000</portal2:salary>
+        <portal2:vacancies rdf:datatype="http://www.w3.org/2001/XMLSchema#int">2</portal2:vacancies>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.iiitb.ac.in/IMT2018071/DM/portal2#job1_address -->
+
+    <owl:NamedIndividual rdf:about="http://www.iiitb.ac.in/IMT2018071/DM/portal2#job1_address">
+        <rdf:type rdf:resource="http://www.iiitb.ac.in/IMT2018071/DM/portal2#job_address"/>
+        <portal2:job_addr_id rdf:datatype="http://www.w3.org/2001/XMLSchema#int">5001</portal2:job_addr_id>
+        <portal2:location_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">electronic city, bangalore</portal2:location_name>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.iiitb.ac.in/IMT2018071/DM/portal2#skill1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.iiitb.ac.in/IMT2018071/DM/portal2#skill1">
+        <rdf:type rdf:resource="http://www.iiitb.ac.in/IMT2018071/DM/portal2#skill"/>
+        <portal2:skill_id rdf:datatype="http://www.w3.org/2001/XMLSchema#int">6001</portal2:skill_id>
+        <portal2:skill_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DevOps</portal2:skill_name>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
+

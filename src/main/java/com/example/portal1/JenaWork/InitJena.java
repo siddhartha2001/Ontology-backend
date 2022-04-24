@@ -33,6 +33,8 @@ public class InitJena {
     private static String ontoFile1 = "file:///home/siddhartha/Documents/workspace-spring-tool-suite-4-4.14.0.RELEASE/portal1/portal1.owl";
     private static String ds = "file:///home/siddhartha/Documents/workspace-spring-tool-suite-4-4.14.0.RELEASE/portal1/portal1_data.owl";
     private static String sc = "file:///home/siddhartha/Documents/workspace-spring-tool-suite-4-4.14.0.RELEASE/portal1/portal1_schema.owl";
+    private static String sc1 = "file:///home/siddhartha/Documents/workspace-spring-tool-suite-4-4.14.0.RELEASE/portal1/map12.owl";
+    private static String ds1 = "file:///home/siddhartha/Documents/workspace-spring-tool-suite-4-4.14.0.RELEASE/portal1/portal2_data.owl";    
     private static String ontoFile2 = "file:///home/siddhartha/Documents/workspace-spring-tool-suite-4-4.14.0.RELEASE/portal1/final_portal2.owl";
     private static String ontoFile3 = "file:///home/siddhartha/map123.owl";
     //    http://www.learningsparql.com/2ndeditionexamples/ex013.rq
@@ -66,7 +68,16 @@ public class InitJena {
         	Reasoner res = ReasonerRegistry.getOWLReasoner();
         	res = res.bindSchema(schema);
 //        	InfModel inf = ModelFactory.createInfModel(res, data);   	
-        	InfModel inf = ModelFactory.createRDFSModel(schema, data);
+        	InfModel inf1 = ModelFactory.createInfModel(res, data);
+        	
+        	data = RDFDataMgr.loadModel(ds1);
+        	schema = RDFDataMgr.loadModel(sc1);
+        	res = ReasonerRegistry.getOWLReasoner();
+        	res = res.bindSchema(schema);
+        	InfModel inf2 = ModelFactory.createInfModel(res, data);
+        	
+        	
+        	
         	
         	
             @SuppressWarnings("deprecation")
@@ -88,18 +99,15 @@ public class InitJena {
                 System.out.println(query);
 
                 //Execute the query and obtain results
-                qe = QueryExecutionFactory.create(query, inf);
+                qe = QueryExecutionFactory.create(query, inf1);
                 ResultSet results = qe.execSelect();
-
-                // Output query results
-                //ResultSetFormatter.out(System.out, results, query);
                 rs[0] = results;                
                 
                 //PORTAL 2 RESULTS
-                ontoModel2.read(in2, null);
-                map12.read(in3, null);       
-                Model temp = ModelFactory.createUnion(map12, ontoModel2);
-                qe = QueryExecutionFactory.create(query, temp);
+//                ontoModel2.read(in2, null);
+//                map12.read(in3, null);       
+//                Model temp = ModelFactory.createUnion(map12, ontoModel2);
+                qe = QueryExecutionFactory.create(query, inf2);
                 results = qe.execSelect();
 
                 rs[1] = results;
