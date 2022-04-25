@@ -91,8 +91,27 @@ public class MyController {
 	
 	@CrossOrigin
 	@RequestMapping("/apply/job")
-	void applyJob(@RequestParam String job_id){
+	public JSONObject applyJob(@RequestBody ApplyJobRequest applyJobRequest){
 		
+		JSONObject obj = new JSONObject();
+		String queryString = "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> "
+				+ "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> "
+				+ "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> " 
+				+ "PREFIX portal: <http://www.iiitb.ac.in/IMT2018071/DM/portal1#> "
+				+ "PREFIX owl: <http://www.w3.org/2002/07/owl#> "
+				+ "INSERT {"
+				+ " ?x portal:AppliesFor ?y "
+				+ "}"
+				+ "WHERE {"
+				+ " ?x portal:User_Id "
+				+ applyJobRequest.getUserId()
+				+ " . ?y portal:job_id "
+				+ applyJobRequest.getJobId()
+				+ "}";
+		
+		InitJena.execUpdate(queryString);
+		obj.put("status", "Success");
+		return obj;
 	}
 	
 	@CrossOrigin
@@ -527,12 +546,12 @@ public class MyController {
 					+ "INSERT {"
 					+ " ?x portal:HasSkills ?y }"
 					+ "WHERE { "
-					+ " ?x portal:User_Id portal:"
+					+ " ?x portal:User_Id "
 					+ skillAddRequest.getId()
-					+ " . ?y portal:skill portal:"
+					+ " . ?y portal:skill \""
 					+ skillAddRequest.getName()
-					+ " }";
-		}
+					+ "\" }";
+			}
 		
 		InitJena.execUpdate(queryString);
 		obj.put("status", "Success");

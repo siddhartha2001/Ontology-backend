@@ -39,13 +39,14 @@ public class InitJena {
     private static String ontoFile3 = "file:///home/siddhartha/map123.owl";
     //    http://www.learningsparql.com/2ndeditionexamples/ex013.rq
     
+    //use this if we are adding new triplets
     public static void execUpdate(String queryString) {
     	Dataset dataset = DatasetFactory.createTxnMem();
-    	String load = "LOAD <"+ ontoFile1 + ">";	
+    	String load = "LOAD <"+ ds + ">";	
     	UpdateAction.parseExecute(load, dataset);
     	UpdateAction.parseExecute(queryString, dataset);
     	try{
-    		File file = new File("/home/siddhartha/temp.owl");
+    		File file = new File("/home/siddhartha/Documents/workspace-spring-tool-suite-4-4.14.0.RELEASE/portal1/portal1_data.owl");
     		FileOutputStream out = new FileOutputStream(file);
     		RDFDataMgr.write(out, dataset.getDefaultModel(), RDFFormat.RDFXML_PLAIN);
     		System.out.println("fghjklp");
@@ -55,6 +56,7 @@ public class InitJena {
     }    
 
 
+    //Query on portal1 and portal2 
     public static ResultSet[] execQuery(String queryString) {
 
         OntModel ontoModel1 = ModelFactory.createOntologyModel(OntModelSpec.OWL_MEM, null);
@@ -62,6 +64,7 @@ public class InitJena {
         OntModel map12 = ModelFactory.createOntologyModel(OntModelSpec.OWL_MEM, null);
         try {
         	
+        	//loading portal1 schema and data
         	Model data = RDFDataMgr.loadModel(ds);
         	Model schema = RDFDataMgr.loadModel(sc);
         	
@@ -70,6 +73,7 @@ public class InitJena {
 //        	InfModel inf = ModelFactory.createInfModel(res, data);   	
         	InfModel inf1 = ModelFactory.createInfModel(res, data);
         	
+        	//loading portal2 data and mapping schema
         	data = RDFDataMgr.loadModel(ds1);
         	schema = RDFDataMgr.loadModel(sc1);
         	res = ReasonerRegistry.getOWLReasoner();
@@ -99,6 +103,7 @@ public class InitJena {
                 System.out.println(query);
 
                 //Execute the query and obtain results
+     
                 qe = QueryExecutionFactory.create(query, inf1);
                 ResultSet results = qe.execSelect();
                 rs[0] = results;                
@@ -124,7 +129,8 @@ public class InitJena {
         }
         return null;
     }
-      
+     
+    // Function to handle 2 SPARQL variables 
     public static List<JSONObject> describeClass(String queryString, int prtl, String key1, String key2){
     	System.out.println(queryString);
     	ResultSet[] resultSet = execQuery(queryString);
@@ -166,6 +172,9 @@ public class InitJena {
         return list;
     }
     
+    
+    //Function to handle 3 SPARQL variables 
+    // Function to get all rdf triplet corresponding to a class instance.
     public static List<JSONObject> getClasses(String queryString){
     	System.out.println(queryString);
     	ResultSet[] resultSet = execQuery(queryString);
@@ -227,6 +236,7 @@ public class InitJena {
     }
     
 
+    //Function to handle 1 SPARQL variables 
     public static List<JSONObject> getItems(String queryString, int prtl){
     	System.out.println(queryString);
     	ResultSet[] resultSet = execQuery(queryString);

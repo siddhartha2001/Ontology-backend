@@ -10,12 +10,13 @@ public class AddExperienceRequest {
 	private String job_title;
 	private String prev_company;
 	
-	public AddExperienceRequest(@JsonProperty("id") String id,
-						@JsonProperty("job_title") String job_title,
-						@JsonProperty("job_description") String job_description,
-						@JsonProperty("start_date") String start_date,
-						@JsonProperty("end_date") String end_date,
-						@JsonProperty("prev_company") String prev_company) {
+	public AddExperienceRequest(@JsonProperty("userId") String id,
+			@JsonProperty("jobTitle") String job_title,
+			@JsonProperty("jobDesc") String job_description,
+			@JsonProperty("startDate") String start_date,
+			@JsonProperty("endDate") String end_date,
+			@JsonProperty("prevCompany") String prev_company) {
+		
 		this.id = id;
 		this.job_title = job_title;
 		this.job_description = job_description;
